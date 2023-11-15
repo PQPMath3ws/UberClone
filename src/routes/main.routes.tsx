@@ -1,6 +1,10 @@
 import React from 'react';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Dimensions} from 'react-native';
+import {IconProps} from 'react-native-vector-icons/Icon';
 import {NavigationContainer} from '@react-navigation/native';
 
 import HomeTabScreen from '../pages/HomeTabsScreen/HomeTabScreen';
@@ -9,14 +13,31 @@ import AccountTabScreen from '../pages/HomeTabsScreen/AccountTabScreen';
 
 const Tab = createBottomTabNavigator();
 
+const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
 
 const screenOptions = {
   headerShown: false,
+  tabBarActiveBackgroundColor: '#ffffff',
+  tabBarActiveTintColor: '#000000',
+  tabBarInactiveBackgroundColor: '#ffffff',
+  tabBarInactiveTintColor: '#aaaaaa',
   tabBarStyle: {
     height: Math.floor(height / 18),
   },
+  tabBarLabelStyle: {
+    marginTop: -4,
+    marginBottom: 10,
+    fontFamily: 'UberMove-Bold',
+    fontSize: Math.floor(height / 90),
+  },
 };
+
+function TabBarIconElement(Icon: any, props: IconProps) {
+  const iconWidth = Math.floor(width / 20);
+
+  return <Icon {...props} size={iconWidth} />;
+}
 
 export default function MainRoutes() {
   return (
@@ -24,17 +45,35 @@ export default function MainRoutes() {
       <Tab.Navigator>
         <Tab.Screen
           name="HomeTabScreen"
-          options={screenOptions}
+          options={{
+            ...screenOptions,
+            tabBarLabel: 'Página Inicial',
+            tabBarIcon: ({color}) =>
+              TabBarIconElement(EntypoIcon, {name: 'home', color: color}),
+          }}
           component={HomeTabScreen}
         />
         <Tab.Screen
           name="ActivitiesTabScreen"
-          options={screenOptions}
+          options={{
+            ...screenOptions,
+            tabBarLabel: 'Atividade',
+            tabBarIcon: ({color}) =>
+              TabBarIconElement(MaterialIcons, {
+                name: 'sticky-note-2',
+                color: color,
+              }),
+          }}
           component={ActivitiesTabScreen}
         />
         <Tab.Screen
           name="AccountTabScreen"
-          options={screenOptions}
+          options={{
+            ...screenOptions,
+            tabBarLabel: 'Conta',
+            tabBarIcon: ({color}) =>
+              TabBarIconElement(Ionicons, {name: 'person', color: color}),
+          }}
           component={AccountTabScreen}
         />
       </Tab.Navigator>
