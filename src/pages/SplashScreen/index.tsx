@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import * as React from 'react';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
 
@@ -14,7 +14,7 @@ function loadAppScreen(
       index: 0,
       routes: [
         {
-          name: 'SplashScreen',
+          name: 'HomeTabsScreen',
         },
       ],
     });
@@ -25,7 +25,7 @@ export default function SplashScreen({
   navigation,
 }: {
   navigation: NativeStackNavigationProp<ParamListBase, 'SplashScreen'>;
-}): ReactElement {
+}): React.ReactElement {
   return (
     <ScreenView>
       <LottieLogoViewAnimation

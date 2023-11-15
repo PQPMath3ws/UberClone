@@ -14,6 +14,6 @@ export const ScreenView = styled.View`
 `;
 
 export const LottieLogoViewAnimation = styled(LottieView)`
-  width: ${Math.floor(width / 4.5)}px;
-  height: ${Math.floor(width / 4.5)}px;
+  width: ${Math.floor(width / 4.8)}px;
+  height: ${Math.floor(width / 4.8)}px;
 `;
