@@ -26,15 +26,15 @@ const screenOptions = {
     height: Math.floor(height / 18),
   },
   tabBarLabelStyle: {
-    marginTop: -4,
-    marginBottom: 10,
+    marginTop: -Math.floor((height / 100) * 1.2),
+    marginBottom: Math.floor((height / 100) * 1.3),
     fontFamily: 'UberMove-Bold',
-    fontSize: Math.floor(height / 90),
+    fontSize: Math.floor(height / 92),
   },
 };
 
 function TabBarIconElement(Icon: any, props: IconProps) {
-  const iconWidth = Math.floor(width / 20);
+  const iconWidth = Math.floor(width / 24);
 
   return <Icon {...props} size={iconWidth} />;
 }
