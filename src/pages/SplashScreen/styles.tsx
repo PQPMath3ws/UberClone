@@ -2,7 +2,17 @@ import styled from 'styled-components/native';
 import LottieView from 'lottie-react-native';
 import {Dimensions} from 'react-native';
 
+import {SizeConfig} from '../../assets/config/SizeConfig';
+
 const width = Dimensions.get('screen').width;
+const height = Dimensions.get('screen').height;
+
+if (width > height) {
+  new SizeConfig(height, width);
+}
+else {
+  new SizeConfig(width, height);
+}
 
 export const ScreenView = styled.View`
   background-color: #000000;
@@ -14,6 +24,6 @@ export const ScreenView = styled.View`
 `;
 
 export const LottieLogoViewAnimation = styled(LottieView)`
-  width: ${Math.floor(width / 4.8)}px;
-  height: ${Math.floor(width / 4.8)}px;
+  width: ${Math.floor(SizeConfig.widthMultiplier * 20)}px;
+  height: ${Math.floor(SizeConfig.widthMultiplier * 20)}px;
 `;

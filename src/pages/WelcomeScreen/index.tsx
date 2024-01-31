@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {
   AntDesignIcon,
