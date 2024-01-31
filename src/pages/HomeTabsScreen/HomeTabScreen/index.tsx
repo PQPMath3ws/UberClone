@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import RecentAddressCard from '../../../components/RecentAddressCard';
+
 import {
   ScreenContainer,
   ScreenView,
@@ -15,8 +17,6 @@ import {
   TravelTimeText,
   UberText,
 } from './styles';
-
-import RecentAddressCard from '../../../components/RecentAddressCard';
 
 export default function HomeTabScreen(): React.ReactElement {
   return (
