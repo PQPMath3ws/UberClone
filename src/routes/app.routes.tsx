@@ -7,6 +7,7 @@ import MainRoutes from './main.routes';
 import {useAuth} from '../hooks/authentication';
 
 import LoginScreen from '../pages/LoginScreen';
+import PermissionsErrorScreen from '../pages/PermissionsErrorScreen';
 import SplashScreen from '../pages/SplashScreen';
 import WelcomeScreen from '../pages/WelcomeScreen';
 
@@ -26,6 +27,11 @@ export default function AppRoutes(): React.ReactElement {
           name="SplashScreen"
           options={screenOptions}
           component={SplashScreen}
+        />
+        <Stack.Screen
+          name="PermissionsErrorScreen"
+          options={screenOptions}
+          component={PermissionsErrorScreen}
         />
         {!user && (
           <Stack.Screen
