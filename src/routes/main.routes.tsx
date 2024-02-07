@@ -5,7 +5,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Dimensions} from 'react-native';
 import {IconProps} from 'react-native-vector-icons/Icon';
-import {NavigationContainer} from '@react-navigation/native';
 
 import HomeTabScreen from '../pages/HomeTabsScreen/HomeTabScreen';
 import ActivitiesTabScreen from '../pages/HomeTabsScreen/ActivitiesTabScreen';
@@ -41,42 +40,40 @@ function TabBarIconElement(Icon: any, props: IconProps) {
 
 export default function MainRoutes() {
   return (
-    <NavigationContainer independent={true}>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="HomeTabScreen"
-          options={{
-            ...screenOptions,
-            tabBarLabel: 'Página Inicial',
-            tabBarIcon: ({color}) =>
-              TabBarIconElement(EntypoIcon, {name: 'home', color: color}),
-          }}
-          component={HomeTabScreen}
-        />
-        <Tab.Screen
-          name="ActivitiesTabScreen"
-          options={{
-            ...screenOptions,
-            tabBarLabel: 'Atividade',
-            tabBarIcon: ({color}) =>
-              TabBarIconElement(MaterialIcons, {
-                name: 'sticky-note-2',
-                color: color,
-              }),
-          }}
-          component={ActivitiesTabScreen}
-        />
-        <Tab.Screen
-          name="AccountTabScreen"
-          options={{
-            ...screenOptions,
-            tabBarLabel: 'Conta',
-            tabBarIcon: ({color}) =>
-              TabBarIconElement(Ionicons, {name: 'person', color: color}),
-          }}
-          component={AccountTabScreen}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen
+        name="HomeTabScreen"
+        options={{
+          ...screenOptions,
+          tabBarLabel: 'Página Inicial',
+          tabBarIcon: ({color}) =>
+            TabBarIconElement(EntypoIcon, {name: 'home', color: color}),
+        }}
+        component={HomeTabScreen}
+      />
+      <Tab.Screen
+        name="ActivitiesTabScreen"
+        options={{
+          ...screenOptions,
+          tabBarLabel: 'Atividade',
+          tabBarIcon: ({color}) =>
+            TabBarIconElement(MaterialIcons, {
+              name: 'sticky-note-2',
+              color: color,
+            }),
+        }}
+        component={ActivitiesTabScreen}
+      />
+      <Tab.Screen
+        name="AccountTabScreen"
+        options={{
+          ...screenOptions,
+          tabBarLabel: 'Conta',
+          tabBarIcon: ({color}) =>
+            TabBarIconElement(Ionicons, {name: 'person', color: color}),
+        }}
+        component={AccountTabScreen}
+      />
+    </Tab.Navigator>
   );
 }

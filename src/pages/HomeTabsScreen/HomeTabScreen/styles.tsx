@@ -36,7 +36,7 @@ export const SearchBarItem = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const SearchBarItemLeft = styled.View`
+export const SearchBarItemLeft = styled.TouchableOpacity`
   width: 60%;
   height: 100%;
   display: flex;

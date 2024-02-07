@@ -1,7 +1,8 @@
-import * as React from 'react';
-import {PermissionsAndroid} from 'react-native';
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import * as React from 'react';
+import {PermissionsAndroid, Platform} from 'react-native';
+import {isLocationEnabled, promptForEnableLocationIfNeeded} from 'react-native-android-location-enabler';
 
 import {LottieLogoViewAnimation, ScreenView} from './styles';
 
@@ -16,7 +17,7 @@ export default function SplashScreen({
 }): React.ReactElement {
   const {user} = useAuth();
 
-  async function requestPermissions() {
+  async function requestPermissionsAndCheckGPS() {
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -30,7 +31,19 @@ export default function SplashScreen({
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        loadAppScreen(user ? true : false, true);
+        const checkIsLocationEnabled: boolean = await isLocationEnabled();
+        if (checkIsLocationEnabled) {
+          loadAppScreen(user ? true : false, true);
+        } else {
+          try {
+            if (Platform.OS === "android") {
+              await promptForEnableLocationIfNeeded();
+            }
+            loadAppScreen(user ? true : false, true);
+          } catch {
+            loadAppScreen(user ? true : false, false);
+          }
+        }
       } else {
         loadAppScreen(user ? true : false, false);
       }
@@ -62,7 +75,7 @@ export default function SplashScreen({
         source={UberLogoAnimation}
         autoPlay={true}
         loop={false}
-        onAnimationFinish={() => requestPermissions()}
+        onAnimationFinish={() => requestPermissionsAndCheckGPS()}
       />
     </ScreenView>
   );

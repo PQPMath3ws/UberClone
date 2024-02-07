@@ -9,6 +9,7 @@ import {useAuth} from '../hooks/authentication';
 import LoginScreen from '../pages/LoginScreen';
 import PermissionsErrorScreen from '../pages/PermissionsErrorScreen';
 import SplashScreen from '../pages/SplashScreen';
+import TripSelectionScreen from '../pages/TripSelectionScreen';
 import WelcomeScreen from '../pages/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
@@ -52,6 +53,13 @@ export default function AppRoutes(): React.ReactElement {
             name="HomeTabsScreen"
             options={screenOptions}
             component={MainRoutes}
+          />
+        )}
+        {user && (
+          <Stack.Screen
+            name="TripSelectionScreen"
+            options={screenOptions}
+            component={TripSelectionScreen}
           />
         )}
       </Stack.Navigator>

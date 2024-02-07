@@ -1,3 +1,5 @@
+import {ParamListBase} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import * as React from 'react';
 
 import RecentAddressCard from '../../../components/RecentAddressCard';
@@ -18,13 +20,21 @@ import {
   UberText,
 } from './styles';
 
-export default function HomeTabScreen(): React.ReactElement {
+export default function HomeTabScreen({
+  navigation,
+}: {
+  navigation: NativeStackNavigationProp<ParamListBase, 'HomeTabScreen'>;
+}): React.ReactElement {
+  function changeScreen(screen: string) {
+    navigation.navigate(screen);
+  }
+
   return (
     <ScreenView>
       <ScreenContainer>
         <UberText>Uber</UberText>
         <SearchBarItem>
-          <SearchBarItemLeft>
+          <SearchBarItemLeft onPress={() => changeScreen("TripSelectionScreen")}>
             <SearchBarIcon name="search" />
             <SearchBarText>Inserir local de partida</SearchBarText>
           </SearchBarItemLeft>
